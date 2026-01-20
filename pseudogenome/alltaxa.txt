@@ -1,0 +1,4 @@
+Xiphophorus_maculatus	/public3/group_crf/home/b20xuwy57/Xiphophorus/pseudogenome/ref/xiphophorus_maculatus.fa
+Xiphophorus_variatus	/public3/group_crf/home/b20xuwy57/Xiphophorus/pseudogenome/ref/xiphophorus_variatus.bam.genotyped.g.vcf.gz
+Xiphophorus_hellerii	/public3/group_crf/home/b20xuwy57/Xiphophorus/pseudogenome/ref/xiphophorus_hellerii.bam.genotyped.g.vcf.gz
+YS18	/public3/group_crf/home/b20xuwy57/Xiphophorus/pseudogenome/ref/YS18.bam.genotyped.g.vcf.gz
