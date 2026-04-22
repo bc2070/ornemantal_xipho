@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+#SBATCH --job-name=raxml
+#SBATCH -p long,himem,hugemem,gpu
+#SBATCH -c 8
+#SBATCH --mem=30G
+#SBATCH -o aps-%j.out
+#SBATCH -e aps-%j.err
+
+
+module load raxml
+
+in=all_samples_clean.phy
+
+raxmlHPC-PTHREADS-AVX -s $in -f a -x 1234 -p 1234 -# 1000 -m GTRGAMMA -n OUT -T 8
