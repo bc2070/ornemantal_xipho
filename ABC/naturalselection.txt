@@ -1,0 +1,4 @@
+Population	Gen	Selection
+hellerii	-1	1
+maculatus	-1	1
+hyb	-1	Fitness0

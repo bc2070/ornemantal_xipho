@@ -1,0 +1,4 @@
+Phenotypes	Formula
+Sex	chr10_10003
+Trait0	chr14_21981865
+Fitness0	fIs=chr14_21981865, if(fIs==2,%AA%,if(fIs==3,%Aa%,if(fIs==4,%aa%,0)))
