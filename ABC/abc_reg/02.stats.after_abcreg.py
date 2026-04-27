@@ -3,7 +3,7 @@ import numpy as np
 from scipy import stats
 
 if len(sys.argv) != 2:
-    print(f"用法: python {sys.argv[0]} <input_file>")
+    print(f"python {sys.argv[0]} <input_file>")
     sys.exit(1)
 
 input_file = sys.argv[1]
@@ -20,11 +20,11 @@ try:
             except (ValueError, IndexError):
                 continue
 except FileNotFoundError:
-    print(f"错误: 文件 '{input_file}' 未找到。")
+    print(f"Error: file '{input_file}' not found。")
     sys.exit(1)
 
 if len(fifth_column_data) < 2:
-    print("错误: 数据不足，无法进行分析。")
+    print("Error: Insufficient data, unable to conduct analysis.")
     sys.exit(1)
 
 data_array = np.array(fifth_column_data)
@@ -32,9 +32,9 @@ data_array = np.array(fifth_column_data)
 percentile_2_5 = np.percentile(data_array, 2.5)
 percentile_97_5 = np.percentile(data_array, 97.5)
 
-print(f"2.5分位数: {percentile_2_5}")
-print(f"97.5分位数: {percentile_97_5}")
-print("\n检验数据分布峰值与0的差异 (Bootstrap CI for Mode):")
+print(f"percentile_2.5: {percentile_2_5}")
+print(f"percentile_97.5: {percentile_97_5}")
+print("\n(Bootstrap CI for Mode):")
 
 def estimate_mode(data):
     if np.std(data) == 0:
@@ -45,7 +45,7 @@ def estimate_mode(data):
     return x_grid[np.argmax(density)]
 
 original_mode = estimate_mode(data_array)
-print(f"数据分布的估计峰值 (Mode): {original_mode}")
+print(f"(Mode): {original_mode}")
 
 n_bootstrap = 10000
 bootstrap_modes = []
@@ -58,15 +58,15 @@ for _ in range(n_bootstrap):
         continue
 
 if not bootstrap_modes:
-    print("无法通过自助法计算置信区间。")
+    print("The confidence interval cannot be calculated using the self-service method.")
     sys.exit(1)
 
 ci_lower = np.percentile(bootstrap_modes, 2.5)
 ci_upper = np.percentile(bootstrap_modes, 97.5)
 
-print(f"峰值的95%置信区间: [{ci_lower}, {ci_upper}]")
+print(f"95% confidence interval for the peak value: [{ci_lower}, {ci_upper}]")
 
 if ci_lower <= 0 <= ci_upper:
-    print("结论: 峰值与0无显著差异 (0在95%置信区间内)。")
+    print("no significant difference")
 else:
-    print("结论: 峰值与0有显著差异 (0不在95%置信区间内)。")
+    print("significant difference")
