@@ -1,9 +1,7 @@
-#根据ahmm之后生成的BED结果，使用chromplot作图；
 
-#切换工作目录
+
 setwd("/data2/projects/jgeng/Xiphophorus/ahmm_posteriro/ahmm_bed")
 
-#导入bed目录
 bed_list<-c("APS1_ahmm2bed","APS2_ahmm2bed","APS3_ahmm2bed","APS4_ahmm2bed","APS5_ahmm2bed",
             "BMK1_ahmm2bed","BMK2_ahmm2bed","BMK3_ahmm2bed","BMK4_ahmm2bed","BMK5_ahmm2bed","BMK6_ahmm2bed","BMK7_ahmm2bed","BMK8_ahmm2bed","BMK9_ahmm2bed","BMK10_ahmm2bed",
             "BML1_ahmm2bed","BML2_ahmm2bed","BML3_ahmm2bed","BML4_ahmm2bed","BML5_ahmm2bed","BML6_ahmm2bed",
@@ -22,7 +20,7 @@ library(chromPlot)
 t1=read.table("/data2/projects/jgeng/Xiphophorus/ahmm_posteriro/chrom.txt",header = T,sep = "\t",fileEncoding = "utf-8",stringsAsFactors = F)
 
 
-#根据bed_list循环操作
+
 for (i in c(1:78)){
   a<-read.table(file=bed_list[i],sep = "\t",header = TRUE)
   n<-length(a$chrom)
