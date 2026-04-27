@@ -7,7 +7,7 @@ for i in Ss.hm.s.txt;do
 	echo $sName
 	sed -i '/^Gen/!d' $i &&
 	sed -i 's/Gen//g' $i &&
-#这里要先过滤不为Gen开头的行
+# filter out the lines not start with Gen
 	sed -i '/nan/d' $i &&
 	awk '$9 >= 0' $i > ${sName}.fixed.txt
 	./reg -p ${sName}.fixed.txt -d neutral_data -P 5 -S 4 -b neutral.out -t 0.05 -T 
